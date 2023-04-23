@@ -2,8 +2,6 @@
 import os
 
 
-
-
 def rename():
     a = 0
     for file in sorted_filenames:
@@ -18,6 +16,7 @@ def rename():
         # os.rename(os.path.join(path, file), os.path.join(path, new_name))
         os.rename(os.path.join(path, file), os.path.join(path, new_name))
         a += 1
+
 
 def mysort(path):
     filelists = os.listdir(path)
@@ -83,13 +82,27 @@ def get_filename(file_dir):
 
 
 if __name__ == '__main__':
-    ext_name = ".png"
+    ext_name = ".jpg"
     # for foler in range(12, 13):
     #     path = r'/home/toky/Datasets/colon_dataset_virtual/test_dataset/test' + str(foler) + '/depth'
     #     # sorted_filenames = depth_sort_endo(path)
     #     sorted_filenames = os.listdir(path)  # 不用排序的，以数字开头的
     #     rename()
-    path = r'/home/toky/Datasets/Endo_colon_unity/train_dataset/'
+
     # sorted_filenames = depth_sort_endo(path)
-    sorted_filenames = os.listdir(path)  # 不用排序的，以数字开头的
-    rename()
+    # sorted_filenames = os.listdir(path)  # 不用排序的，以数字开头的
+    # rename()
+
+    # 2023年4月5日
+    with open(r'C:\Users\DELL\Desktop\Phantom\0408phantom-4\jpg2\images.txt', encoding='utf-8') as file:
+        ori_filenames = file.readlines()
+    ori_filenames = [i.rstrip() for i in ori_filenames]
+
+    with open(r'C:\Users\DELL\Desktop\Phantom\0408phantom-4\depth\images.txt', encoding='utf-8') as file:
+        sorted_filenames = file.readlines()
+    sorted_filenames = [i.rstrip() for i in sorted_filenames]
+
+    ori_path = r'C:\Users\DELL\Desktop\Phantom\0408phantom-4\jpg2/'
+    new_path = r'C:\Users\DELL\Desktop\Phantom\0408phantom-4\depth/'
+    for ori_file, new_file in zip(ori_filenames, sorted_filenames):
+        os.rename(os.path.join(new_path, new_file), os.path.join(new_path, ori_file))
