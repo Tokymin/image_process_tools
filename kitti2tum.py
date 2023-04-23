@@ -37,7 +37,7 @@ def kitti2tum(kitti_pose_list):
 if __name__ == "__main__":
     # test
     with open(
-            r"E:\Toky\sc_depth_pl_modified\Swin_Depth_Pose_Net\06-28-11_test6.txt",
+            r"E:\Toky\sc_depth_pl_modified\Swin_Depth_Pose_Net\.txt",
             "r") as f:
         pose = f.readlines()
     kitti2tum(pose)
